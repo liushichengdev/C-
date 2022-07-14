@@ -6,7 +6,7 @@ std::mutex mtx;           // mutex for critical section
 
 void print_block(int n, char c) {
 	// critical section (exclusive access to std::cout signaled by lifetime of lck):
-	//std::unique_lock<std::mutex> lck(mtx);
+	std::unique_lock<std::mutex> lck(mtx);
 	for (int i = 0; i < n; ++i) { std::cout << c; }
 	std::cout << '\n';
 }
